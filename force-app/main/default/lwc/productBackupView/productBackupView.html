@@ -1,0 +1,73 @@
+<template>
+    <lightning-card>
+        <template if:true={backup}>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered" style="background:#ea3f25">
+                <thead>
+                    <tr>
+                        <td class="slds-text-color_inverse">
+                            <b>Product Backup Information</b>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr bgcolor="white">
+                        <td class="slds-size_1-of-2">
+                            <b>Name</b>
+                        </td>
+                        <td class="slds-size_1-of-2 slds-text-align_right">
+                            {backup.Name}
+                        </td>
+                    </tr>
+                    <tr bgcolor="white">
+                        <td class="slds-size_1-of-2">
+                            <b>Product External Id</b>
+                        </td>
+                        <td class="slds-size_1-of-2 slds-text-align_right">
+                            {backup.Product_External_ID__c}
+                        </td>
+                    </tr>
+                    <tr bgcolor="white">
+                        <td class="slds-size_1-of-2">
+                            <b>Selling Price</b>
+                        </td>
+                        <td class="slds-size_1-of-2 slds-text-align_right">
+                            <lightning-formatted-number value={backup.Selling_Price__c} format-style="currency" currency-code="EUR"></lightning-formatted-number>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </template>
+        <template if:true={product}>
+            <br/>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered" style="background:#53ad32">
+                <thead>
+                    <tr>
+                        <td class="slds-text-color_inverse">
+                            <b>Related Product Information</b>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="slds-size_1-of-2" bgcolor="white">
+                        <td class="slds-size_1-of-2">
+                            <b>Active?</b>
+                        </td>
+                        <td class="slds-size_1-of-2">
+                            <template if:true={product.IsActive}>Yes</template>
+                            <template if:false={product.IsActive}>No</template>
+                        </td>
+                    </tr>
+                    <tr bgcolor="white">
+                        <td class="slds-size_1-of-2">
+                            <b>Created At</b>
+                        </td>
+                        <td class="slds-size_1-of-2">
+                            <lightning-formatted-date-time value={product.CreatedDate} year="numeric" month="2-digit" day="2-digit" hour="2-digit"
+                            minute="2-digit" hour12={falseVariable}></lightning-formatted-date-time>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </template>
+    </lightning-card>
+</template>
